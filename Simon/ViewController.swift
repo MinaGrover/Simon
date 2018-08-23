@@ -17,10 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomLeftImageView: UIImageView!    //yellow image == 3
     @IBOutlet weak var bottomRightImageView: UIImageView!   //blue image == 4
     
+    var imageArray = [UIImageView]()
     
-    
-    var sequence = Array<Int>()
-    var userSequence = Array<Int>()
+    var sequence = [Int]()
+    var userSequence = [Int]()
     
     var playMode = false
     
@@ -28,6 +28,10 @@ class ViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        imageArray += [topLeftImageView, topRightImageView, bottomLeftImageView, bottomRightImageView]
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -55,7 +59,14 @@ class ViewController: UIViewController {
     
     @IBAction func screenTapped(_ sender: UITapGestureRecognizer)
     {
-        
+        for image in imageArray
+        {
+            if image.frame.contains(sender.location(in: view)) && playMode == true
+            {
+                selectedAnimate(number: imageArray.index(of: image)!)
+                userSequence += [imageArray.index(of: image)!]
+            }
+        }
     }
     
     
@@ -63,7 +74,7 @@ class ViewController: UIViewController {
     {
         simonSaysTheThing()
         titleLabel.text = "Your turn!"
-        userSequence = Array<Int>()
+        userSequence = [Int]()
         playMode = true
         
     }
@@ -73,14 +84,29 @@ class ViewController: UIViewController {
     {
         for number in sequence
         {
-            selectedAnimate() // give int
+            selectedAnimate(number: number) // give int
         }
     }
     
     
-    func selectedAnimate() //takes int
+    func selectedAnimate(number : Int) //takes int
     {
-        
+        if number == 1      //animate top left
+        {
+            
+        }
+        else if number == 2      //animate top right
+        {
+            
+        }
+        else if number == 3      //animate bottom left
+        {
+            
+        }
+        else if number == 4      //animate bottom right
+        {
+            
+        }
     }
     
     
