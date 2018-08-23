@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     
     @IBAction func playButtonPressed(_ sender: UIButton)
     {
+        //add 3 random #s to sequence
         titleLabel.text = "Ready?"
         //delay 1.5 sec (? subject to change)
         titleLabel.text = "Set?"
@@ -65,6 +66,15 @@ class ViewController: UIViewController {
             {
                 selectedAnimate(number: imageArray.index(of: image)!)
                 userSequence += [imageArray.index(of: image)!]
+                if userSequence[userSequence.count] != sequence[userSequence.count] //check to see if it's right
+                {
+                    fail()
+                }
+                else if userSequence.count == sequence.count //check if done with the sequence
+                {
+                    //add random # to sequence
+                    playGame()
+                }
             }
         }
     }
@@ -72,6 +82,8 @@ class ViewController: UIViewController {
     
     func playGame()
     {
+        playMode = false
+        titleLabel.text = "Simon's turn!"
         simonSaysTheThing()
         titleLabel.text = "Your turn!"
         userSequence = [Int]()
@@ -91,7 +103,7 @@ class ViewController: UIViewController {
     
     func selectedAnimate(number : Int) //takes int
     {
-        if number == 1      //animate top left
+        if number == 1      //animate top left -- change photo + play sound + change photo back
         {
             
         }
@@ -107,6 +119,14 @@ class ViewController: UIViewController {
         {
             
         }
+    }
+    
+    
+    
+    func fail()
+    {
+        titleLabel.text = "Aww! Too Bad"
+        
     }
     
     
