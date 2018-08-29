@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     {
         //add 3 random #s to sequence
         //sequence = [Int.random(in: 1...3), Int.random(in: 1...3), Int.random(in: 1...3)] //ONLY IN SWIFT 4.2
-        sequence = [Int(arc4random_uniform(4)+1), Int(arc4random_uniform(4)+1), Int(arc4random_uniform(4)+1)]
+        sequence = [Int(arc4random_uniform(4)), Int(arc4random_uniform(4)), Int(arc4random_uniform(4))]
         
         titleLabel.text = "Ready?"
         sleep(1)    //delay 1.5 sec (? subject to change)
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
                 else if userSequence.count == sequence.count //check if done with the sequence
                 {
                     //add random # to sequence
-                    sequence += [Int(arc4random_uniform(4)+1)]
+                    sequence += [Int(arc4random_uniform(4))]
                     
                     playGame()
                 }
@@ -116,28 +116,28 @@ class ViewController: UIViewController {
     
     func selectedAnimate(number : Int) //takes int
     {
-        if number == 1      //animate top left -- change photo + play sound + change photo back //sleep() may cut off sound?
+        if number == 0      //animate top left -- change photo + play sound + change photo back //sleep() may cut off sound?
         {
             topLeftImageView.image = UIImage(named: "lightGreen")
             //play sound
             sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkGreen")
         }
-        else if number == 2      //animate top right
+        else if number == 1      //animate top right
         {
             topLeftImageView.image = UIImage(named: "lightRed")
             //play sound
             sleep(1)    //pause 0.5
             topRightImageView.image = UIImage(named: "darkRed")
         }
-        else if number == 3      //animate bottom left
+        else if number == 2      //animate bottom left
         {
             bottomLeftImageView.image = UIImage(named: "lightYellow")
             //play sound
             sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkYellow")
         }
-        else if number == 4      //animate bottom right
+        else if number == 3      //animate bottom right
         {
             bottomRightImageView.image = UIImage(named: "lightBlue")
             //play sound
