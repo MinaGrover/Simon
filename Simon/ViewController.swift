@@ -55,11 +55,11 @@ class ViewController: UIViewController {
         sequence = [Int(arc4random_uniform(4)+1), Int(arc4random_uniform(4)+1), Int(arc4random_uniform(4)+1)]
         
         titleLabel.text = "Ready?"
-        //delay 1.5 sec (? subject to change)
+        sleep(1)    //delay 1.5 sec (? subject to change)
         titleLabel.text = "Set?"
-        //delay 1.5 sec (? subject to change)
+        sleep(1)    //delay 1.5 sec (? subject to change)
         titleLabel.text = "GO!"
-        //delay 1.5 sec (? subject to change)
+        sleep(1)    //delay 1.5 sec (? subject to change)
         titleLabel.text = "Simon's turn!"
         playGame()
     }
@@ -85,6 +85,7 @@ class ViewController: UIViewController {
                     
                     playGame()
                 }
+                lastTime = currentTime
             }
         }
     }
