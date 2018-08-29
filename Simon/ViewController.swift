@@ -24,13 +24,18 @@ class ViewController: UIViewController {
     
     var playMode = false
     
+    var lastTime = 0
+    var currentTime = 0
+    var timer = Timer()
+    var isTimerRunning = true
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         imageArray += [topLeftImageView, topRightImageView, bottomLeftImageView, bottomRightImageView]
-        
+        runTimer()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -90,9 +95,11 @@ class ViewController: UIViewController {
         playMode = false
         titleLabel.text = "Simon's turn!"
         simonSaysTheThing()
+        
         titleLabel.text = "Your turn!"
         userSequence = [Int]()
         playMode = true
+        lastTime = currentTime
         
     }
     
@@ -108,32 +115,32 @@ class ViewController: UIViewController {
     
     func selectedAnimate(number : Int) //takes int
     {
-        if number == 1      //animate top left -- change photo + play sound + change photo back
+        if number == 1      //animate top left -- change photo + play sound + change photo back //sleep() may cut off sound?
         {
             topLeftImageView.image = UIImage(named: "lightGreen")
             //play sound
-            //pause 0.5
+            sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkGreen")
         }
         else if number == 2      //animate top right
         {
             topLeftImageView.image = UIImage(named: "lightRed")
             //play sound
-            //pause 0.5
+            sleep(1)    //pause 0.5
             topRightImageView.image = UIImage(named: "darkRed")
         }
         else if number == 3      //animate bottom left
         {
             bottomLeftImageView.image = UIImage(named: "lightYellow")
             //play sound
-            //pause 0.5
+            sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkYellow")
         }
         else if number == 4      //animate bottom right
         {
             bottomRightImageView.image = UIImage(named: "lightBlue")
             //play sound
-            //pause 0.5
+            sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkBlue")
         }
     }
@@ -146,6 +153,27 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
+    func runTimer()
+    {
+        isTimerRunning = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc func updateTimer()
+    {
+        currentTime += 1     //This will increment the seconds
+        
+        
+        if currentTime == lastTime + 5 && playMode == true
+        {
+            fail()
+        }
+        
+        
+    }
     
     
     
