@@ -29,6 +29,8 @@ class ViewController: UIViewController {
     var timer = Timer()
     var isTimerRunning = true
     
+    var bitTime = 0
+    
     
     override func viewDidLoad()
     {
@@ -50,19 +52,46 @@ class ViewController: UIViewController {
     
     @IBAction func playButtonPressed(_ sender: UIButton)
     {
+        sequence = [Int(arc4random_uniform(4)), Int(arc4random_uniform(4)), Int(arc4random_uniform(4))]
+        bitTime = currentTime
+        titleLabel.text = "Ready?"
+        startThePlaying()
+    }
+    
+    func startThePlaying()
+    {
         //add 3 random #s to sequence
         //sequence = [Int.random(in: 1...3), Int.random(in: 1...3), Int.random(in: 1...3)] //ONLY IN SWIFT 4.2
-        sequence = [Int(arc4random_uniform(4)), Int(arc4random_uniform(4)), Int(arc4random_uniform(4))]
+        //sequence = [Int(arc4random_uniform(4)), Int(arc4random_uniform(4)), Int(arc4random_uniform(4))]
         
-        titleLabel.text = "Ready?"
-        sleep(1)    //delay 1.5 sec (? subject to change)
-        titleLabel.text = "Set?"
-        sleep(1)    //delay 1.5 sec (? subject to change)
-        titleLabel.text = "GO!"
-        sleep(1)    //delay 1.5 sec (? subject to change)
-        titleLabel.text = "Simon's turn!"
-        playGame()
+        
+        
+        //titleLabel.text = "Ready?"
+        //sleep(1)    //delay 1.5 sec (? subject to change)
+        if currentTime >= bitTime + 1 && currentTime < bitTime + 2
+        {
+            titleLabel.text = "Set?"
+            startThePlaying()
+        }
+            //sleep(1)    //delay 1.5 sec (? subject to change)
+        else if currentTime >= bitTime + 2 && currentTime < bitTime + 3
+        {
+            titleLabel.text = "GO!"
+            startThePlaying()
+        }
+            //sleep(1)    //delay 1.5 sec (? subject to change)
+        else if currentTime >= bitTime + 3 //&& currentTime < bitTime + 4
+        {
+            titleLabel.text = "Simon's turn!"
+            playGame()
+        }
+        else
+        {
+            startThePlaying()
+        }
     }
+    
+    
     
     
     
