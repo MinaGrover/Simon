@@ -31,6 +31,10 @@ class ViewController: UIViewController {
     
     var bitTime = 0
     
+    var canSet = false
+    var canGo = false
+    var canSimonTurn = false
+    
     
     override func viewDidLoad()
     {
@@ -55,6 +59,10 @@ class ViewController: UIViewController {
         sequence = [Int(arc4random_uniform(4)), Int(arc4random_uniform(4)), Int(arc4random_uniform(4))]
         bitTime = currentTime
         titleLabel.text = "Ready?"
+        canSet = true
+        
+        
+        
         startThePlaying()
     }
     
@@ -68,21 +76,26 @@ class ViewController: UIViewController {
         
         //titleLabel.text = "Ready?"
         //sleep(1)    //delay 1.5 sec (? subject to change)
-        if currentTime >= bitTime + 1 && currentTime < bitTime + 2
+        if currentTime >= bitTime + 1 && currentTime < bitTime + 2 && canSet == true
         {
             titleLabel.text = "Set?"
+            canGo = true
+            canSet = false
             startThePlaying()
         }
             //sleep(1)    //delay 1.5 sec (? subject to change)
-        else if currentTime >= bitTime + 2 && currentTime < bitTime + 3
+        else if currentTime >= bitTime + 2 && currentTime < bitTime + 3 && canGo == true
         {
             titleLabel.text = "GO!"
+            canSimonTurn = true
+            canGo = false
             startThePlaying()
         }
             //sleep(1)    //delay 1.5 sec (? subject to change)
-        else if currentTime >= bitTime + 3 //&& currentTime < bitTime + 4
+        else if currentTime >= bitTime + 3 && canSimonTurn == true //&& currentTime < bitTime + 4
         {
             titleLabel.text = "Simon's turn!"
+            canSimonTurn = false
             playGame()
         }
         else
