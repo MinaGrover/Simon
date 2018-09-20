@@ -69,13 +69,15 @@ class ViewController: UIViewController {
     func startThePlaying()
     {
         //add 3 random #s to sequence
-        //sequence = [Int.random(in: 1...3), Int.random(in: 1...3), Int.random(in: 1...3)] //ONLY IN SWIFT 4.2
+        sequence = [Int.random(in: 0...3), Int.random(in: 0...3), Int.random(in: 0...3)] //ONLY IN SWIFT 4.2
         //sequence = [Int(arc4random_uniform(4)), Int(arc4random_uniform(4)), Int(arc4random_uniform(4))]
         
         
         
         //titleLabel.text = "Ready?"
         //sleep(1)    //delay 1.5 sec (? subject to change)
+        
+        /*
         if currentTime >= bitTime + 1 && currentTime < bitTime + 2 && canSet == true
         {
             titleLabel.text = "Set?"
@@ -102,6 +104,12 @@ class ViewController: UIViewController {
         {
             startThePlaying()
         }
+        */
+        
+        
+        
+        sleep(1)
+        playGame()
     }
     
     
@@ -116,7 +124,7 @@ class ViewController: UIViewController {
             {
                 selectedAnimate(number: imageArray.index(of: image)!)
                 userSequence += [imageArray.index(of: image)!]
-                if userSequence[userSequence.count] != sequence[userSequence.count] //check to see if it's right
+                if userSequence[userSequence.count - 1] != sequence[userSequence.count - 1] //check to see if it's right
                 {
                     fail()
                 }
@@ -149,10 +157,14 @@ class ViewController: UIViewController {
     
     func simonSaysTheThing()
     {
+        print("simon's turn")
+        
         for number in sequence
         {
             selectedAnimate(number: number) // give int
         }
+        
+        print("player's turn")
     }
     
     
@@ -163,7 +175,16 @@ class ViewController: UIViewController {
             topLeftImageView.image = UIImage(named: "lightGreen")
             //play sound
             sleep(1)    //pause 0.5
-            topLeftImageView.image = UIImage(named: "darkGreen")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                // Put your code which should be executed with a delay here
+                self.topLeftImageView.image = UIImage(named: "darkGreen")
+            })
+            
+            
+            //topLeftImageView.image = UIImage(named: "darkGreen")
+            
+            print("green animated")
         }
         else if number == 1      //animate top right
         {
@@ -171,6 +192,8 @@ class ViewController: UIViewController {
             //play sound
             sleep(1)    //pause 0.5
             topRightImageView.image = UIImage(named: "darkRed")
+            
+            print("red animated")
         }
         else if number == 2      //animate bottom left
         {
@@ -178,6 +201,8 @@ class ViewController: UIViewController {
             //play sound
             sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkYellow")
+            
+            print("yellow animated")
         }
         else if number == 3      //animate bottom right
         {
@@ -185,6 +210,8 @@ class ViewController: UIViewController {
             //play sound
             sleep(1)    //pause 0.5
             topLeftImageView.image = UIImage(named: "darkBlue")
+            
+            print("blue animated")
         }
     }
     
