@@ -12,6 +12,10 @@
 		C1993A7B212C7E0B00B30034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1993A79212C7E0B00B30034 /* Main.storyboard */; };
 		C1993A7D212C7E0F00B30034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1993A7C212C7E0F00B30034 /* Assets.xcassets */; };
 		C1993A80212C7E0F00B30034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1993A7E212C7E0F00B30034 /* LaunchScreen.storyboard */; };
+		C1D940CA21C4155E007D64D3 /* greenBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1D940C921C4155D007D64D3 /* greenBeep.mp3 */; };
+		C1D940CC21C41578007D64D3 /* blueBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1D940CB21C41568007D64D3 /* blueBeep.mp3 */; };
+		C1D940CF21C415B1007D64D3 /* redBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1D940CE21C415B1007D64D3 /* redBeep.mp3 */; };
+		C1D940D121C415BB007D64D3 /* yellowBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1D940D021C415BB007D64D3 /* yellowBeep.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		C1993A7C212C7E0F00B30034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1993A7F212C7E0F00B30034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1993A81212C7E0F00B30034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1D940C921C4155D007D64D3 /* greenBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = greenBeep.mp3; path = Simon/Music/greenBeep.mp3; sourceTree = SOURCE_ROOT; };
+		C1D940CB21C41568007D64D3 /* blueBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = blueBeep.mp3; path = Simon/Music/blueBeep.mp3; sourceTree = SOURCE_ROOT; };
+		C1D940CE21C415B1007D64D3 /* redBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = redBeep.mp3; sourceTree = SOURCE_ROOT; };
+		C1D940D021C415BB007D64D3 /* yellowBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yellowBeep.mp3; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		C1993A74212C7E0B00B30034 /* Simon */ = {
 			isa = PBXGroup;
 			children = (
+				C1D940CD21C41590007D64D3 /* Music */,
 				C1993A75212C7E0B00B30034 /* AppDelegate.swift */,
 				C1993A77212C7E0B00B30034 /* ViewController.swift */,
 				C1993A79212C7E0B00B30034 /* Main.storyboard */,
@@ -62,6 +71,17 @@
 				C1993A81212C7E0F00B30034 /* Info.plist */,
 			);
 			path = Simon;
+			sourceTree = "<group>";
+		};
+		C1D940CD21C41590007D64D3 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C1D940C921C4155D007D64D3 /* greenBeep.mp3 */,
+				C1D940CB21C41568007D64D3 /* blueBeep.mp3 */,
+				C1D940CE21C415B1007D64D3 /* redBeep.mp3 */,
+				C1D940D021C415BB007D64D3 /* yellowBeep.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +143,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D940CA21C4155E007D64D3 /* greenBeep.mp3 in Resources */,
+				C1D940CF21C415B1007D64D3 /* redBeep.mp3 in Resources */,
+				C1D940D121C415BB007D64D3 /* yellowBeep.mp3 in Resources */,
 				C1993A80212C7E0F00B30034 /* LaunchScreen.storyboard in Resources */,
 				C1993A7D212C7E0F00B30034 /* Assets.xcassets in Resources */,
 				C1993A7B212C7E0B00B30034 /* Main.storyboard in Resources */,
+				C1D940CC21C41578007D64D3 /* blueBeep.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
+    var beepPlayer = AVAudioPlayer()
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var topLeftImageView: UIImageView!       //green image == 1
@@ -237,6 +240,14 @@ class ViewController: UIViewController {
             
             print("blue animated")
         }
+        
+        do
+        {
+            beepPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Classical Music for Autumn", ofType: "mp3")!))
+            beepPlayer.prepareToPlay()
+        }
+        catch{}
+        
     }
     
     
@@ -261,7 +272,7 @@ class ViewController: UIViewController {
         currentTime += 1     //This will increment the seconds
         
         
-        if currentTime == lastTime + 5 && playMode == true
+        if currentTime == lastTime + 10 && playMode == true
         {
             fail()
         }
