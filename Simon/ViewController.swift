@@ -161,7 +161,13 @@ class ViewController: UIViewController {
         
         for number in sequence
         {
-            selectedAnimate(number: number) // give int
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                // Put your code which should be executed with a delay here
+                self.selectedAnimate(number: number)
+            })
+            
+            //selectedAnimate(number: number) // give int
         }
         
         print("player's turn")
@@ -174,7 +180,7 @@ class ViewController: UIViewController {
         {
             topLeftImageView.image = UIImage(named: "lightGreen")
             //play sound
-            sleep(1)    //pause 0.5
+            //sleep(1)    //pause 0.5
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 // Put your code which should be executed with a delay here
@@ -188,10 +194,16 @@ class ViewController: UIViewController {
         }
         else if number == 1      //animate top right
         {
-            topLeftImageView.image = UIImage(named: "lightRed")
+            topRightImageView.image = UIImage(named: "lightRed")
             //play sound
-            sleep(1)    //pause 0.5
-            topRightImageView.image = UIImage(named: "darkRed")
+            //sleep(1)    //pause 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                // Put your code which should be executed with a delay here
+                self.topRightImageView.image = UIImage(named: "darkRed")
+            })
+            
+            //topRightImageView.image = UIImage(named: "darkRed")
             
             print("red animated")
         }
@@ -199,8 +211,14 @@ class ViewController: UIViewController {
         {
             bottomLeftImageView.image = UIImage(named: "lightYellow")
             //play sound
-            sleep(1)    //pause 0.5
-            topLeftImageView.image = UIImage(named: "darkYellow")
+            //sleep(1)    //pause 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                // Put your code which should be executed with a delay here
+                self.bottomLeftImageView.image = UIImage(named: "darkYellow")
+            })
+            
+            //bottomLeftImageView.image = UIImage(named: "darkYellow")
             
             print("yellow animated")
         }
@@ -208,8 +226,14 @@ class ViewController: UIViewController {
         {
             bottomRightImageView.image = UIImage(named: "lightBlue")
             //play sound
-            sleep(1)    //pause 0.5
-            topLeftImageView.image = UIImage(named: "darkBlue")
+            //sleep(1)    //pause 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                // Put your code which should be executed with a delay here
+                self.bottomRightImageView.image = UIImage(named: "darkBlue")
+            })
+            
+            //bottomRightImageView.image = UIImage(named: "darkBlue")
             
             print("blue animated")
         }
