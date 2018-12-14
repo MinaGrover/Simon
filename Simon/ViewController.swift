@@ -179,12 +179,19 @@ class ViewController: UIViewController {
     
     func selectedAnimate(number : Int) //takes int
     {
+        
+        
         if number == 0      //animate top left -- change photo + play sound + change photo back //sleep() may cut off sound?
         {
             topLeftImageView.image = UIImage(named: "lightGreen")
             //play sound
             //sleep(1)    //pause 0.5
-            
+            do
+            {
+                beepPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "greenBeep", ofType: "mp3")!))
+                beepPlayer.prepareToPlay()
+            }
+            catch{}
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 // Put your code which should be executed with a delay here
                 self.topLeftImageView.image = UIImage(named: "darkGreen")
@@ -200,7 +207,12 @@ class ViewController: UIViewController {
             topRightImageView.image = UIImage(named: "lightRed")
             //play sound
             //sleep(1)    //pause 0.5
-            
+            do
+            {
+                beepPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "redBeep", ofType: "mp3")!))
+                beepPlayer.prepareToPlay()
+            }
+            catch{}
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 // Put your code which should be executed with a delay here
                 self.topRightImageView.image = UIImage(named: "darkRed")
@@ -215,7 +227,12 @@ class ViewController: UIViewController {
             bottomLeftImageView.image = UIImage(named: "lightYellow")
             //play sound
             //sleep(1)    //pause 0.5
-            
+            do
+            {
+                beepPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "yellowBeep", ofType: "mp3")!))
+                beepPlayer.prepareToPlay()
+            }
+            catch{}
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 // Put your code which should be executed with a delay here
                 self.bottomLeftImageView.image = UIImage(named: "darkYellow")
@@ -230,7 +247,12 @@ class ViewController: UIViewController {
             bottomRightImageView.image = UIImage(named: "lightBlue")
             //play sound
             //sleep(1)    //pause 0.5
-            
+            do
+            {
+                beepPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "blueBeep", ofType: "mp3")!))
+                beepPlayer.prepareToPlay()
+            }
+            catch{}
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 // Put your code which should be executed with a delay here
                 self.bottomRightImageView.image = UIImage(named: "darkBlue")
@@ -241,12 +263,7 @@ class ViewController: UIViewController {
             print("blue animated")
         }
         
-        do
-        {
-            beepPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Classical Music for Autumn", ofType: "mp3")!))
-            beepPlayer.prepareToPlay()
-        }
-        catch{}
+        beepPlayer.play()
         
     }
     
